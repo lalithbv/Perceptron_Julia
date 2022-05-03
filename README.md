@@ -24,42 +24,6 @@ Steps to perform a perceptron learning algorithm:
 If the exemplars used to train the perceptron are drawn from two linearly separable classes, then the perceptron algorithm converges and positions the decision surface in the form of a hyperplane between the two classes.
 e.g. In 2 dimensions: We start with drawing a random line. If some point is on the wrong side, we shift the line. If some other point is now on the wrong side, we shift the line again, and we continue this process until the line separates all the points correctly. In other words, the perceptron learning algorithm converges in finite number of steps, given a linearly separable dataset. 
 
-Let $x_{1}, \ldots, x_{n}$ be a set of positive vectors. Then the Perceptron Learning algorithm determines a weight vector $\bar{w}$ for which $\bar{w} \cdot \bar{x}_{i}>0,$ for all $i=1, \ldots, n$
-```math
-**Proof:** Since the set of input vectors is positive, there is a weight vector $\overline{w^{*}}$ for which $\left|\overline{w^{*}}\right|=1,$ and there exists a $\delta>0$ for which, for $i=1,2, \ldots, n$
-$$\left|\overline{w^{*}} \cdot \overline{x}_{i}\right|>\delta.$$
-Furthermore, let $r>0$ be such that $\left|\bar{x}_{i}\right| \leq r,$ for all $i=1, \ldots, n .$ Let $k$ be the number of times the vector $\bar{w}$ in the perceptron learning algorithm has been updated, and let $\bar{w}_{k}$ denote the value of the weight vector after the $k$ th update. We assume $\bar{w}_{0}=\overline{0} ;$ i.e. the algorithm begins with a zero weight vector. **The objective is to show that $k$ must be bounded**. Suppose $\bar{x}_{i}$ is used for the $k$ th update in the algorithm. Then $\bar{w}_{k}$ can be recursively written as
-$$
-\bar{w}_{k}=\bar{w}_{k-1}+x_{i},
-$$
-where $\bar{w}_{k-1} \cdot \bar{x}_{i} \leq 0.$
-
-**Claim:**  $\left|\bar{w}_{k}\right|^{2} \leq k r^{2}.$ <br>
-The proof of this claim is by induction on $k .$ For $k=0, \bar{w}_{0}=\overline{0},$ and so $\left|\bar{w}_{0}\right|^{2}=0 \leq 0\left(r^{2}\right)=0 .$
-For the inductive step, assume that $\left|w_{j}\right|^{2} \leq j r^{2},$ for all $j<k .$ Then
-$$
-\begin{aligned}
-\left|\bar{w}_{k}\right|^{2}=\left|\bar{w}_{k-1}+\bar{x}_{i}\right|^{2} &=\left(\bar{w}_{k-1}+\bar{x}_{i}\right) \cdot\left(\bar{w}_{k-1}+\bar{x}_{i}\right) \leq \\
-&\left|\bar{w}_{k-1}\right|^{2}+r^{2} \leq(k-1) r^{2}+r^{2}=k r^{2}
-\end{aligned}
-$$
-and the claim is proved; 
-Thus, $\left|\bar{w}_{k}\right| \leq r \sqrt{k}$; <br>
-Next, we may use induction a second time to prove a lower bound on $\overline{w^{*}} \cdot \bar{w}_{k},$ namely that $\overline{w^{*}} \cdot \bar{w}_{k} \geq k \delta.$ This is certainly true for $k=0 .$ Now if the inductive assumption is that $\overline{w^{*}} \cdot \bar{w}_{k-1} \geq(k-1) \delta,$ then
-$$
-\begin{array}{c}
-\overline{w^{*}}\cdot \bar{w}_{k}=\overline{w^{*}} \cdot\left(\bar{w}_{k-1}+\bar{x}_{i}\right)= \\
-\overline{w^{*}} \cdot \bar{w}_{k-1}+\overline{w^{*}} \cdot \bar{x}_{i} \geq \overline{w^{*}} \cdot \bar{w}_{k-1}+\delta \geq(k-1) \delta+\delta=k \delta
-\end{array}
-$$
-and the lower bound is proved.
-Finally, applying the Cauchy-Schwarz inequality, we have
-$$
-\left|\overline{w^{*}}\right| \cdot\left|\bar{w}_{k}\right| \geq \overline{w^{*}}, \bar{w}_{k} \geq k \delta
-$$
-And since $\left|\overline{w^{*}}\right|=1,$ this implies $\left|\bar{w}_{k}\right| \geq k \delta$. 
-Putting the two inequalities together yields $k \delta \leq r \sqrt{k},$ which yields $k \leq \frac{r^{2}}{\delta^{2}} .$ <br>**Therefore, $k$ is bounded, and the algorithm must terminate.**
-```
 ## An Example: Implementation of two input Logic Gates using Perceptron
 
 As we know, a Perceptron calculates a weighted sum of its inputs and thresholds it with a step function. Geometrically, this means the perceptron can separate its input space with a line (for 2D input) or an hyperplane (for 3D input). That’s where the notion that a perceptron can only separate linearly separable problems came from. 
