@@ -26,6 +26,8 @@ e.g. In 2 dimensions: We start with drawing a random line. If some point is on t
 
 ## An Example: Implementation of two input Logic Gates using Perceptron
 
+![LogicGates](./Resources/LogicGates.png)
+
 As we know, a Perceptron calculates a weighted sum of its inputs and thresholds it with a step function. Geometrically, this means the perceptron can separate its input space with a line (for 2D input) or an hyperplane (for 3D input). That’s where the notion that a perceptron can only separate linearly separable problems came from. 
 
 And hence, as shown in the below figure, basic logic gates like AND & OR gates can be easily implemented using Perceptron since they are Linearly Separable but the **XOR function is not linearly separable, and therefore it really is impossible for a single line to separate it**. In this notebook, I'll be constructing Logic gates using a Single-layer Perceptron Neural Network and prove this claim in Julia.
