@@ -25,7 +25,7 @@ If the exemplars used to train the perceptron are drawn from two linearly separa
 e.g. In 2 dimensions: We start with drawing a random line. If some point is on the wrong side, we shift the line. If some other point is now on the wrong side, we shift the line again, and we continue this process until the line separates all the points correctly. In other words, the perceptron learning algorithm converges in finite number of steps, given a linearly separable dataset. 
 
 Let $x_{1}, \ldots, x_{n}$ be a set of positive vectors. Then the Perceptron Learning algorithm determines a weight vector $\bar{w}$ for which $\bar{w} \cdot \bar{x}_{i}>0,$ for all $i=1, \ldots, n$
-
+```math
 **Proof:** Since the set of input vectors is positive, there is a weight vector $\overline{w^{*}}$ for which $\left|\overline{w^{*}}\right|=1,$ and there exists a $\delta>0$ for which, for $i=1,2, \ldots, n$
 $$\left|\overline{w^{*}} \cdot \overline{x}_{i}\right|>\delta.$$
 Furthermore, let $r>0$ be such that $\left|\bar{x}_{i}\right| \leq r,$ for all $i=1, \ldots, n .$ Let $k$ be the number of times the vector $\bar{w}$ in the perceptron learning algorithm has been updated, and let $\bar{w}_{k}$ denote the value of the weight vector after the $k$ th update. We assume $\bar{w}_{0}=\overline{0} ;$ i.e. the algorithm begins with a zero weight vector. **The objective is to show that $k$ must be bounded**. Suppose $\bar{x}_{i}$ is used for the $k$ th update in the algorithm. Then $\bar{w}_{k}$ can be recursively written as
@@ -59,7 +59,7 @@ $$
 $$
 And since $\left|\overline{w^{*}}\right|=1,$ this implies $\left|\bar{w}_{k}\right| \geq k \delta$. 
 Putting the two inequalities together yields $k \delta \leq r \sqrt{k},$ which yields $k \leq \frac{r^{2}}{\delta^{2}} .$ <br>**Therefore, $k$ is bounded, and the algorithm must terminate.**
-
+```
 ## An Example: Implementation of two input Logic Gates using Perceptron
 
 As we know, a Perceptron calculates a weighted sum of its inputs and thresholds it with a step function. Geometrically, this means the perceptron can separate its input space with a line (for 2D input) or an hyperplane (for 3D input). That’s where the notion that a perceptron can only separate linearly separable problems came from. 
